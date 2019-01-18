@@ -6,7 +6,7 @@
 #
 Name     : kruler
 Version  : 18.08.0
-Release  : 1
+Release  : 2
 URL      : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz.sig
