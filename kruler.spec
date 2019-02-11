@@ -5,23 +5,23 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kruler
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kruler-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kruler-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kruler-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kruler-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: kruler-bin
-Requires: kruler-data
-Requires: kruler-license
-Requires: kruler-locales
+Requires: kruler-bin = %{version}-%{release}
+Requires: kruler-data = %{version}-%{release}
+Requires: kruler-license = %{version}-%{release}
+Requires: kruler-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
-BuildRequires : qtx11extras-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -29,8 +29,8 @@ No detailed description available
 %package bin
 Summary: bin components for the kruler package.
 Group: Binaries
-Requires: kruler-data
-Requires: kruler-license
+Requires: kruler-data = %{version}-%{release}
+Requires: kruler-license = %{version}-%{release}
 
 %description bin
 bin components for the kruler package.
@@ -69,26 +69,26 @@ locales components for the kruler package.
 
 
 %prep
-%setup -q -n kruler-18.08.0
+%setup -q -n kruler-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535201491
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549873790
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535201491
+export SOURCE_DATE_EPOCH=1549873790
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kruler
-cp COPYING %{buildroot}/usr/share/doc/kruler/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kruler/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kruler
+cp COPYING %{buildroot}/usr/share/package-licenses/kruler/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kruler/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -139,7 +139,6 @@ popd
 /usr/share/doc/HTML/id/kruler/index.cache.bz2
 /usr/share/doc/HTML/id/kruler/index.docbook
 /usr/share/doc/HTML/id/kruler/kruler-settings.png
-/usr/share/doc/HTML/id/kruler/kruler.png
 /usr/share/doc/HTML/it/kruler/index.cache.bz2
 /usr/share/doc/HTML/it/kruler/index.docbook
 /usr/share/doc/HTML/nl/kruler/index.cache.bz2
@@ -159,9 +158,9 @@ popd
 /usr/share/doc/HTML/uk/kruler/kruler-settings.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kruler/COPYING
-/usr/share/doc/kruler/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kruler/COPYING
+/usr/share/package-licenses/kruler/COPYING.DOC
 
 %files locales -f kruler.lang
 %defattr(-,root,root,-)
