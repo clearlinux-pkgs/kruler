@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kruler
-Version  : 19.08.3
-Release  : 14
-URL      : https://download.kde.org/stable/applications/19.08.3/src/kruler-19.08.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.3/src/kruler-19.08.3.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.3/src/kruler-19.08.3.tar.xz.sig
+Version  : 19.12.0
+Release  : 15
+URL      : https://download.kde.org/stable/release-service/19.12.0/src/kruler-19.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.0/src/kruler-19.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.0/src/kruler-19.12.0.tar.xz.sig
 Summary  : Screen Ruler
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -69,14 +69,15 @@ locales components for the kruler package.
 
 
 %prep
-%setup -q -n kruler-19.08.3
+%setup -q -n kruler-19.12.0
+cd %{_builddir}/kruler-19.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573177006
+export SOURCE_DATE_EPOCH=1576562705
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -93,11 +94,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1573177006
+export SOURCE_DATE_EPOCH=1576562705
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kruler
-cp %{_builddir}/kruler-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kruler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/kruler-19.08.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/kruler/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/kruler-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/kruler/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/kruler-19.12.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kruler/1bd373e4851a93027ba70064bd7dbdc6827147e1
 pushd clr-build
 %make_install
 popd
@@ -145,6 +146,8 @@ popd
 /usr/share/doc/HTML/en/kruler/kruler.png
 /usr/share/doc/HTML/es/kruler/index.cache.bz2
 /usr/share/doc/HTML/es/kruler/index.docbook
+/usr/share/doc/HTML/id/kruler/index.cache.bz2
+/usr/share/doc/HTML/id/kruler/index.docbook
 /usr/share/doc/HTML/it/kruler/index.cache.bz2
 /usr/share/doc/HTML/it/kruler/index.docbook
 /usr/share/doc/HTML/nl/kruler/index.cache.bz2
